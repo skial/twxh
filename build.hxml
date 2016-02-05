@@ -1,0 +1,6 @@
+-cp src
+
+--each
+
+-main uhx.cs.Twxh
+-cs bin/cs

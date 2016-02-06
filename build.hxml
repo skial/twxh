@@ -1,6 +1,14 @@
 -cp src
+#-debug
+-lib thx.core
+-lib thx.csv
 
 --each
 
 -main uhx.cs.Twxh
 -cs bin/cs
+
+--next
+
+-main uhx.n.Twxh
+-neko bin/n/twxh.n

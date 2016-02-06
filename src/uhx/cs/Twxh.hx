@@ -25,18 +25,18 @@ import cs.system.runtime.interopservices.DllImportAttribute;
 @:nativeGen class Twxh {
 
 	public static function main() {
-		var cchWidth = 80;
-		var cchHeight = 25;
+		var width = 80;
+		var height = 25;
 		var stdOutputHandle = -11;
-		var csbi:CONSOLE_SCREEN_BUFFER_INFO = null;
+		var buffer:CONSOLE_SCREEN_BUFFER_INFO = null;
 		
-		if (Helper.GetConsoleScreenBufferInfo( Helper.GetStdHandle( stdOutputHandle ), csbi )) {
-			cchWidth = csbi.dwSize.X;
-			cchHeight = csbi.dwSize.Y;
+		if (Helper.GetConsoleScreenBufferInfo( Helper.GetStdHandle( stdOutputHandle ), buffer )) {
+			width = buffer.srWindow.Right - buffer.srWindow.Left + 1;
+			height = buffer.srWindow.Bottom - buffer.srWindow.Top + 1;
 			
 		}
 		
-		Sys.println( haxe.Json.stringify( { width:cchWidth, height:cchHeight } ) );
+		Sys.println( haxe.Json.stringify( { width: width, height: height } ) );
 	}
 	
 }
@@ -62,7 +62,7 @@ extern class Helper {
 	}
 }
 
-@:extern @:struct @:nativeGen class SMALL_RECT {
+@:struct @:nativeGen class SMALL_RECT {
 	public var Left:Int16;
 	public var Top:Int16;
 	public var Right:Int16;
